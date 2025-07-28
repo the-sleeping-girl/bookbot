@@ -1,4 +1,4 @@
-from stats import word_count
+from stats import word_count # Refactored project by importing word_count function into stats.py.
 
 def get_book_text(filepath):
 	with open(filepath) as f:
