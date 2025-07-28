@@ -1,4 +1,4 @@
-from stats import word_count, num_characters # Refactored project by importing word_count function into stats.py.
+from stats import word_count, num_characters, dict_list # Refactored project by importing word_count function into stats.py.
 
 def get_book_text(filepath):
 	with open(filepath) as f:
@@ -13,8 +13,17 @@ def main():
 	book_contents = get_book_text(filepath)
 	num_words = word_count(book_contents)
 	chara_count = num_characters(book_contents)
-	print(f"{num_words} words found in the document")
-	print(f"{chara_count}") # decides which file to look at (books/frankenstein), reads in all the text from that file, counts the number of words, and prints out a message saying how many words it found.
+	chara_list = dict_list(chara_count)
+	print("============ BOOKBOT ============")
+	print("Analyzing book found at books/frankenstein.txt...")
+
+	print("----------- Word Count ----------")
+	print(f"Found {num_words} total words")
+
+	print("--------- Character Count -------")
+	for dict in chara_list:
+		print(f"{dict['char']}: {dict['num']}")
+	print("============= END ===============")
 
 if __name__ == "__main__":
 	main() # If you run this file directly, go ahead and run the main function.
