@@ -1,4 +1,4 @@
-import sys
+import sys # imported built-in sys module, allowing command-line arguments to be passed into the script.
 from stats import word_count, num_characters, dict_list # Refactored project by importing word_count function into stats.py.
 
 def get_book_text(filepath):
@@ -11,9 +11,9 @@ def get_book_text(filepath):
 
 def main():
 	if len(sys.argv) != 2:
-		print("Usage: python3 main.py <path_to_book>")
+		print("Usage: python3 main.py <path_to_book>") # if the length of sys.argv is not exactly 2, print the usage message and exit program with error code of 1.
 		sys.exit(1)
-	filepath = sys.argv[1]
+	filepath = sys.argv[1] # sys.argv with the index of the second command-line argument (the filepath).
 	book_contents = get_book_text(filepath)
 	num_words = word_count(book_contents)
 	chara_count = num_characters(book_contents)
