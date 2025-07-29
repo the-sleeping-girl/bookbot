@@ -1,3 +1,4 @@
+import sys
 from stats import word_count, num_characters, dict_list # Refactored project by importing word_count function into stats.py.
 
 def get_book_text(filepath):
@@ -9,13 +10,16 @@ def get_book_text(filepath):
 	# return len(words) # defines a function that takes some text, splits it into individual words, and counts how many words there are.
 
 def main():
-	filepath = 'books/frankenstein.txt'
+	if len(sys.argv) != 2:
+		print("Usage: python3 main.py <path_to_book>")
+		sys.exit(1)
+	filepath = sys.argv[1]
 	book_contents = get_book_text(filepath)
 	num_words = word_count(book_contents)
 	chara_count = num_characters(book_contents)
 	chara_list = dict_list(chara_count)
 	print("============ BOOKBOT ============")
-	print("Analyzing book found at books/frankenstein.txt...")
+	print(f"Analyzing book found at {filepath}... ")
 
 	print("----------- Word Count ----------")
 	print(f"Found {num_words} total words")
